@@ -40,6 +40,16 @@ jobs:
         
       - name: Build project
         run: npm run build
+
+      - name: Build project
+        run: npm run build
+        
+      # ADD THIS STEP:
+      - name: Verify build output
+        run: ls -R ./dist
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
