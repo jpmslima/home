@@ -20,20 +20,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # This explicitly passes the token the action is running with
-          token: ${{ secrets.GITHUB_TOKEN }} 
-          
-          # This disables shallow clone and fetches the entire history.
-          # 0 means "all history".
-          fetch-depth: 0
-          
-          # We'll keep this just to be safe
-          submodules: false
-          lfs: true
-      
+      - name: Manual Checkout to get real error
+        run: |
+          echo "Attempting manual clone..."
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git .
+  
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
